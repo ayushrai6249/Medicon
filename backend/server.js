@@ -18,6 +18,14 @@ app.use(express.json());
 app.use(cors());
 
 // api endpoints
+app.get("/health", (req, res) => {
+    res.status(200).json({
+        status: "OK",
+        message: "Server is healthy",
+        uptime: process.uptime(),
+        timestamp: new Date()
+    });
+});
 app.use('/api/admin', adminRouter);
 app.use('/api/doctor', doctorRouter);
 app.use('/api/user', userRouter);
