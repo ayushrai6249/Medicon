@@ -11,15 +11,17 @@ import Appointment from './pages/Appointment'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import { ToastContainer, toast } from 'react-toastify';
+import StressForm from './pages/StressForm'
 
 
 const App = () => {
   return (
     <div className='mx-4 sm:mx-[10%]'>
-      <ToastContainer/>
+      <ToastContainer />
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
+        <Route path='/stress-detection' element={<StressForm />} />
         <Route path='/doctors' element={<Doctors />} />
         <Route path='/doctors/:speciality' element={<Doctors />} />
         <Route path='/login' element={<Login />} />
