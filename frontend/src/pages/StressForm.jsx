@@ -124,6 +124,7 @@ const initialForm = {
 const StressForm = () => {
     const [form, setForm] = useState(initialForm);
     const [prediction, setPrediction] = useState("");
+    const [confidence, setConfidence] = useState(null);
     const [loading, setLoading] = useState(false);
     const [showResult, setShowResult] = useState(false);
 
@@ -200,6 +201,7 @@ const StressForm = () => {
         setForm(initialForm);
         setBirthDate("");
         setPrediction("");
+        setConfidence(null);
         setShowResult(false);
     };
 
@@ -226,6 +228,7 @@ const StressForm = () => {
     const handlePredict = async () => {
         setLoading(true);
         setPrediction("");
+        setConfidence(null);
 
         try {
             const response = await fetch(
@@ -246,6 +249,7 @@ const StressForm = () => {
             const data = await response.json();
 
             setPrediction(data.prediction);
+            setConfidence(data.confidence);
             setShowResult(true);
         } catch (error) {
             console.error(error);
@@ -684,30 +688,74 @@ const StressForm = () => {
                         </div>
                     )}
 
-                    {prediction &&
-                        prediction !== "Error" && (
-                            <div className="space-y-8">
-                                <div>
-                                    <p className="text-sm text-slate-500">
-                                        Prediction
-                                    </p>
+                    {prediction && prediction !== "Error" && (
+                        <div className="space-y-8">
 
-                                    <h1 className="mt-2 text-5xl font-bold">
-                                        {prediction}
-                                    </h1>
-                                </div>
+                            {/* Prediction */}
+                            <div>
+                                <p className="text-sm font-medium text-slate-500">
+                                    Predicted Stress Level
+                                </p>
 
-                                <div className="border-t pt-6">
-                                    <h3 className="mb-3 text-lg font-semibold">
-                                        Explanation
+                                <h1
+                                    className={`mt-2 text-5xl font-bold ${prediction === "High"
+                                        ? "text-red-600"
+                                        : prediction === "Medium"
+                                            ? "text-yellow-600"
+                                            : prediction === "Low"
+                                                ? "text-green-600"
+                                                : "text-slate-800"
+                                        }`}
+                                >
+                                    {prediction}
+                                </h1>
+                            </div>
+
+                            {/* Confidence */}
+                            <div className="border-t pt-6">
+                                <div className="mb-2 flex items-center justify-between">
+                                    <h3 className="text-lg font-semibold">
+                                        Model Confidence
                                     </h3>
 
-                                    <p className="leading-7 text-slate-600">
-                                        {getExplanation()}
-                                    </p>
+                                    <span className="font-bold text-slate-800">
+                                        {confidence !== null
+                                            ? `${confidence.toFixed(1)}%`
+                                            : "N/A"}
+                                    </span>
                                 </div>
+
+                                {/* Confidence Progress Bar */}
+                                <div className="h-3 w-full overflow-hidden rounded-full bg-slate-200">
+                                    <div
+                                        className="h-full rounded-full bg-slate-900 transition-all duration-700"
+                                        style={{
+                                            width: `${Math.min(
+                                                Math.max(confidence || 0, 0),
+                                                100
+                                            )}%`,
+                                        }}
+                                    />
+                                </div>
+
+                                <p className="mt-2 text-sm text-slate-500">
+                                    How confident the model is in this prediction.
+                                </p>
                             </div>
-                        )}
+
+                            {/* Explanation */}
+                            <div className="border-t pt-6">
+                                <h3 className="mb-3 text-lg font-semibold">
+                                    Explanation
+                                </h3>
+
+                                <p className="leading-7 text-slate-600">
+                                    {getExplanation()}
+                                </p>
+                            </div>
+
+                        </div>
+                    )}
 
                     {prediction === "Error" && (
                         <div className="rounded-lg bg-red-50 p-4 text-red-600">
