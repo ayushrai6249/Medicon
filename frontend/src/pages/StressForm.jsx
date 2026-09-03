@@ -249,7 +249,7 @@ const StressForm = () => {
             const data = await response.json();
 
             setPrediction(data.prediction);
-            setConfidence(data.confidence);
+            setConfidence(data.confidence * 100);
             setShowResult(true);
         } catch (error) {
             console.error(error);
