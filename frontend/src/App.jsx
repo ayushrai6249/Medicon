@@ -11,7 +11,9 @@ import Appointment from './pages/Appointment'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import { ToastContainer, toast } from 'react-toastify';
-import StressForm from './pages/StressForm'
+import Models from './pages/Models'
+import StudentStressForm from './pages/StudentStressForm'
+import WorkingStressForm from './pages/WorkingStressForm'
 
 
 const App = () => {
@@ -21,7 +23,9 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/stress-detection' element={<StressForm />} />
+        <Route path='/working-stress-detection' element={<WorkingStressForm />} />
+        <Route path='/student-mental-health' element={<StudentStressForm />} />
+        <Route path='/stress-detection' element={<Models />} />
         <Route path='/doctors' element={<Doctors />} />
         <Route path='/doctors/:speciality' element={<Doctors />} />
         <Route path='/login' element={<Login />} />

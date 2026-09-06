@@ -121,7 +121,7 @@ const initialForm = {
     Blood_Sugar_Level: 90,
 };
 
-const StressForm = () => {
+const WorkingStressForm = () => {
     const [form, setForm] = useState(initialForm);
     const [prediction, setPrediction] = useState("");
     const [confidence, setConfidence] = useState(null);
@@ -896,4 +896,4 @@ const RadioGroup = ({
     );
 };
 
-export default StressForm;
+export default WorkingStressForm;
