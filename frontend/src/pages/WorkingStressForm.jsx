@@ -711,8 +711,8 @@ const WorkingStressForm = () => {
                                 </h1>
                             </div>
 
-                            {/* Mental Health Support - shown for Medium or Low */}
-                            {(prediction === "Medium" || prediction === "Low") && (
+                            {/* Mental Health Support - shown for Medium or High */}
+                            {(prediction === "Medium" || prediction === "High") && (
                                 <div className="rounded-xl border border-blue-200 bg-blue-50 p-5">
                                     <div className="mb-3 flex items-center gap-2">
                                         <span className="text-2xl" aria-hidden="true">💙</span>
