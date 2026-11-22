@@ -199,9 +199,9 @@ const StudentStressForm = () => {
             };
         }
 
-        if (score <= 3) {
+        if (score <= 5) {
             return {
-                label: "Needs Attention",
+                label: "severe",
                 description:
                     "The predicted score suggests that your mental health indicators may need attention.",
                 className:
@@ -209,9 +209,9 @@ const StudentStressForm = () => {
             };
         }
 
-        if (score <= 5) {
+        if (score <= 6) {
             return {
-                label: "Moderate",
+                label: "Low",
                 description:
                     "The predicted score indicates a moderate level of mental health well-being.",
                 className:
@@ -221,7 +221,7 @@ const StudentStressForm = () => {
 
         if (score <= 7) {
             return {
-                label: "Good",
+                label: "Average",
                 description:
                     "The predicted score indicates generally positive mental health indicators.",
                 className:
@@ -230,7 +230,7 @@ const StudentStressForm = () => {
         }
 
         return {
-            label: "Very Good",
+            label: "Good",
             description:
                 "The predicted score indicates strong positive mental health indicators.",
             className:
@@ -574,6 +574,77 @@ const StudentStressForm = () => {
                                     </p>
 
                                 </div>
+
+                                {/* ================= CONSULTATION SECTION ================= */}
+
+                                {(scoreStatus.label === "severe" ||
+                                    scoreStatus.label === "Low") && (
+                                        <div className="rounded-2xl border border-blue-200 bg-blue-50 p-5">
+
+                                            <div className="mb-4 flex items-center gap-4">
+
+                                                <img
+                                                    src="https://randomuser.me/api/portraits/women/44.jpg"
+                                                    alt="Illustrative female doctor portrait"
+                                                    className="h-20 w-20 rounded-full border-4 border-white object-cover shadow-sm"
+                                                />
+
+                                                <div>
+                                                    <span className="text-xs font-semibold uppercase tracking-wide text-blue-700">
+                                                        Professional Support
+                                                    </span>
+
+                                                    <h3 className="mt-1 text-lg font-bold text-slate-800">
+                                                        Consult a Doctor
+                                                    </h3>
+
+                                                    <p className="text-sm text-slate-600">
+                                                        Dr. Aakriti Pandey
+                                                    </p>
+                                                </div>
+
+                                            </div>
+
+                                            <p className="mb-4 text-sm leading-6 text-slate-600">
+                                                Your assessment indicates that you may benefit from
+                                                professional guidance. Consider consulting a healthcare
+                                                professional to discuss your mental well-being.
+                                            </p>
+
+                                            <div className="space-y-3 rounded-xl bg-white p-4">
+
+                                                <div className="flex items-center gap-3">
+                                                    <span className="text-lg">📞</span>
+                                                    <div>
+                                                        <p className="text-xs text-slate-500">Contact Number</p>
+                                                        <a
+                                                            href="tel:+918795866792"
+                                                            className="font-semibold text-blue-700 hover:underline"
+                                                        >
+                                                            +91 8795866792
+                                                        </a>
+                                                    </div>
+                                                </div>
+
+                                                <div className="flex items-center gap-3">
+                                                    <span className="text-lg">📍</span>
+                                                    <div>
+                                                        <p className="text-xs text-slate-500">Location</p>
+                                                        <p className="font-semibold text-slate-800">
+                                                            MMMUT Dispensary
+                                                        </p>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <p className="mt-3 text-xs text-slate-500">
+                                                The displayed portrait is illustrative and is not a verified
+                                                photograph of Dr. Aakriti Pandey.
+                                            </p>
+
+                                        </div>
+                                    )}
 
                                 {/* SCORE SCALE */}
 

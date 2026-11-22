@@ -711,6 +711,54 @@ const WorkingStressForm = () => {
                                 </h1>
                             </div>
 
+                            {/* Mental Health Support - shown for Medium or Low */}
+                            {(prediction === "Medium" || prediction === "Low") && (
+                                <div className="rounded-xl border border-blue-200 bg-blue-50 p-5">
+                                    <div className="mb-3 flex items-center gap-2">
+                                        <span className="text-2xl" aria-hidden="true">💙</span>
+                                        <h3 className="text-lg font-bold text-slate-800">
+                                            Mental Health Support
+                                        </h3>
+                                    </div>
+
+                                    <p className="mb-4 text-sm leading-6 text-slate-700">
+                                        If you are experiencing stress, anxiety, low mood, or emotional
+                                        distress, you can speak with a trained counsellor through the
+                                        Government of India's Tele-MANAS service. You do not have to
+                                        manage these feelings alone.
+                                    </p>
+
+                                    <div className="rounded-lg bg-white p-4">
+                                        <p className="font-semibold text-slate-800">
+                                            Tele-MANAS – Government of India
+                                        </p>
+                                        <p className="mt-1 text-sm text-slate-600">
+                                            Free, 24/7 mental health support and counselling.
+                                        </p>
+                                        <div className="mt-3 flex flex-wrap items-center gap-2">
+                                            <a
+                                                href="tel:14416"
+                                                className="rounded-lg bg-blue-700 px-4 py-2 font-semibold text-white hover:bg-blue-800"
+                                            >
+                                                Call 14416
+                                            </a>
+                                            <a
+                                                href="tel:18008914416"
+                                                className="rounded-lg border border-blue-300 px-4 py-2 font-semibold text-blue-800 hover:bg-blue-50"
+                                            >
+                                                1-800-891-4416
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <p className="mt-3 text-xs leading-5 text-slate-600">
+                                        If you or someone else is in immediate danger, or there is a
+                                        risk of self-harm, call 112 or visit the nearest emergency
+                                        department. This assessment is not a medical diagnosis.
+                                    </p>
+                                </div>
+                            )}
+
                             {/* Confidence */}
                             <div className="border-t pt-6">
                                 <div className="mb-2 flex items-center justify-between">
